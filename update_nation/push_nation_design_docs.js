@@ -13,6 +13,9 @@ if (!program.args[0]) return console.log('No CouchDB URL provided. Quiting now.'
 var couchUrl = program.args[0]
 var nano = require('nano')(couchUrl)
 
+var isWin = /^win/.test(process.platform);
+
+
 function start() {
     getListOfDatabases()
 }
@@ -35,9 +38,18 @@ function installDesignDocs() {
             if (!err) {
                 if (database != "communities" && database != "languages" && database != "configurations") {
                     console.log("Inserting design docs for the " + database + " database");
-                    var docToPush = 'databases\\' + database + '.js';
+                    var cmd = '';
+                    var docToPush = '';
+                    if (isWin){
+                        cmd = 'pushDocToDb.bat "';
+                        docToPush = 'databases\\' + database + '.js';
+                    }
+                    else{
+                        cmd = 'bash pushDocToDb.sh "';
+                        docToPush = 'databases/' + database + '.js';
+                    }
                     var targetDb = couchUrl + '/' + database;
-                    exec('pushDocToDb.bat "' + docToPush + '" "' + targetDb + '"', function(error, stdout, stderr) {
+                    exec(cmd + docToPush + '" "' + targetDb + '"', function(error, stdout, stderr) {
                         if (error) console.log(error);
                         if (stderr) console.log(stderr);
                         console.log(stdout)
@@ -55,9 +67,18 @@ function installDesignDocs() {
                         console.log(database + ' database created.');
                         if (database != "communities" && database != "languages" && database != "configurations") {
                             console.log("Inserting design docs for the " + database + " database");
-                            var docToPush = 'databases\\' + database + '.js';
+                            var cmd = '';
+                            var docToPush = '';
+                            if (isWin){
+                                cmd = 'pushDocToDb.bat "';
+                                docToPush = 'databases\\' + database + '.js';
+                            }
+                            else{
+                                cmd = 'bash pushDocToDb.sh "';
+                                docToPush = 'databases/' + database + '.js';
+                            }
                             var targetDb = couchUrl + '/' + database;
-                            exec('pushDocToDb.bat "' + docToPush + '" "' + targetDb + '"', function(error, stdout, stderr) {
+                            exec(cmd + docToPush + '" "' + targetDb + '"', function(error, stdout, stderr) {
                                 if (error) console.log(error);
                                 if (stderr) console.log(stderr);
                                 console.log(stdout)
