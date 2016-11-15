@@ -16,9 +16,9 @@ To successfully update any particular language's document located in [BeLL-Apps/
 > and synced with the code repository [l10n_dev][CrowdinBranch] 
 > which will be placed under [BeLL-Apps/init_docs/languages](https://github.com/open-learning-exchange/BeLL-Apps/tree/l10n_dev/init_docs/languages) folder.
 
-** It is important to follow the below mentioned guidelines for source file **
+`It is important to follow the below mentioned guidelines for source file`
 [Text.json][Textjson] 
-** and it also need to be retained on translated files.**
+`and it also need to be retained on translated files.`
 
 1) All of the keys and corresponding values (translations) are going to be surrounded by inverted commas.
      ![Use Commas](../images/pic1.png)
