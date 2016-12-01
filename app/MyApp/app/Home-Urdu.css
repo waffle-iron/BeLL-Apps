@@ -1,4 +1,7 @@
 /*This stylesheet is supposed to applied on page for RTL languages like Arabic, Urdu etc*/
+.body {
+	direction: rtl;
+}
 #dashboard {
     height: 600px;
     width: 950px;
