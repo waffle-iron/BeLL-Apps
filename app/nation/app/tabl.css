@@ -25,3 +25,9 @@ input{width:40%;height:20px}
     height: 20px;
     width:30%;
 }
+#tbl{
+    width:100%;
+}
+#tbl_box{
+    width: 25%;
+}
