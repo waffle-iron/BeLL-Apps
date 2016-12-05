@@ -40,7 +40,7 @@ $(function () {
                 }
             });
             if (attachmentName!= null){
-              //  alert("attachment name : " +attachmentName)
+                //alert("attachment name : " +attachmentName)
                 vars.attchmentURL = attchmentURL ;
                 vars.attachmentName = attachmentName;
             }
